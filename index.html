@@ -11,15 +11,16 @@
     <div class="verifier fast">
       <h1>⚡ 99verifier</h1>
       <p>Lightning-Fast Email Verification</p>
-      <input type="email" placeholder="Enter your email" id="fast-email">
-      <button onclick="verifyFast()">Verify Email Instantly</button>
+      <input type="email" placeholder="Enter email for Verification" id="fast-email">
+      <button onclick="verifyFast()" id="fast-button">Verify Email Instantly</button>
+      <div id="fast-result"></div> <!-- Container to show the result -->
     </div>
 
     <div class="verifier standard">
       <h1>Other Verifier</h1>
       <p>Standard Email Verification</p>
       <input type="email" placeholder="Enter your email" id="standard-email" disabled>
-      <button disabled>Verify Email (Slower)</button>
+      <button id="standard-button" disabled>Verify Email (Slower)</button>
       <small>Verification may take up to 24 hours</small>
     </div>
   </div>
