@@ -43,11 +43,6 @@ body {
   color: white;
 }
 
-.standard {
-  background-color: white;
-  color: black;
-}
-
 /* Text and input styling */
 .verifier h1 {
   font-size: 2rem;
@@ -109,26 +104,21 @@ body {
   background-color: #dceeff;
 }
 
-/* Standard button styling */
-.standard button {
-  background-color: #ddd;
-  color: #212020;
-  cursor: not-allowed;
-}
-
-small {
-  display: block;
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  color: #777;
-}
-
 /* Result styling */
 #fast-result p {
   font-size: 1rem;
-  color: rgb(33, 32, 32);  /* Set result text color to black */
   font-weight: bold;
   margin-top: 1rem;
+}
+
+/* Valid email result styling */
+#fast-result.valid p {
+  color: green;  /* Set result text color to green for valid email */
+}
+
+/* Invalid email result styling */
+#fast-result.invalid p {
+  color: red;  /* Set result text color to red for invalid email */
 }
 
 /* Optional: add a loading spinner to enhance the processing message */
@@ -137,6 +127,7 @@ small {
   animation: loading 1.5s infinite steps(5, end);
 }
 
+/* Loading animation keyframes */
 @keyframes loading {
   0% {
     content: '.';
