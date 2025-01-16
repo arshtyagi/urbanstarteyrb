@@ -7,6 +7,7 @@ function verifyFast() {
   if (email) {
     // Show "Processing..." message and disable the button
     resultDiv.innerHTML = '<p class="processing">Processing...</p>';
+    resultDiv.classList.remove('valid', 'invalid'); // Remove previous result classes
     button.disabled = true;
 
     // Construct the API URL with the entered email
@@ -22,8 +23,10 @@ function verifyFast() {
         // Check if 'is_valid' is true or false and show the result
         if (data.is_valid === "true") {
           resultDiv.innerHTML = `<p>The email ${email} is valid.</p>`;
+          resultDiv.classList.add('valid'); // Add 'valid' class for styling
         } else if (data.is_valid === "false") {
           resultDiv.innerHTML = `<p>The email ${email} is invalid.</p>`;
+          resultDiv.classList.add('invalid'); // Add 'invalid' class for styling
         } else {
           resultDiv.innerHTML = `<p>There was an issue verifying the email ${email}.</p>`;
         }
