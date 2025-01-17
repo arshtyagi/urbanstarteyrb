@@ -121,6 +121,16 @@ body {
   color: red;  /* Set result text color to red for invalid email */
 }
 
+/* Catch-all email result styling */
+#fast-result.catch-all p {
+  color: yellow;  /* Set result text color to yellow for catch-all email */
+}
+
+/* Maybe email result styling */
+#fast-result.maybe p {
+  color: yellow;  /* Set result text color to yellow for maybe email */
+}
+
 /* Optional: add a loading spinner to enhance the processing message */
 #fast-result p.processing::after {
   content: '...';
