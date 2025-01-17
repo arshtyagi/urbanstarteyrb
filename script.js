@@ -7,7 +7,7 @@ function verifyFast() {
   if (email) {
     // Show "Processing..." message and disable the button
     resultDiv.innerHTML = '<p class="processing">Processing...</p>';
-    resultDiv.classList.remove('valid', 'invalid'); // Remove previous result classes
+    resultDiv.classList.remove('valid', 'invalid', 'catch-all', 'maybe'); // Remove previous result classes
     button.disabled = true;
 
     // Construct the API URL with the entered email
@@ -20,15 +20,26 @@ function verifyFast() {
         // Clear previous result
         resultDiv.innerHTML = '';
 
-        // Check if 'is_valid' is true or false and show the result
-        if (data.is_valid === "true") {
-          resultDiv.innerHTML = `<p>The email ${email} is valid.</p>`;
-          resultDiv.classList.add('valid'); // Add 'valid' class for styling
-        } else if (data.is_valid === "false") {
-          resultDiv.innerHTML = `<p>The email ${email} is invalid.</p>`;
-          resultDiv.classList.add('invalid'); // Add 'invalid' class for styling
-        } else {
-          resultDiv.innerHTML = `<p>There was an issue verifying the email ${email}.</p>`;
+        // Check the 'status' field and show the result
+        switch (data.status) {
+          case "valid":
+            resultDiv.innerHTML = `<p>The email ${email} is valid.</p>`;
+            resultDiv.classList.add('valid'); // Add 'valid' class for styling
+            break;
+          case "invalid":
+            resultDiv.innerHTML = `<p>The email ${email} is invalid.</p>`;
+            resultDiv.classList.add('invalid'); // Add 'invalid' class for styling
+            break;
+          case "catch-all":
+            resultDiv.innerHTML = `<p>The email ${email} is a catch-all.</p>`;
+            resultDiv.classList.add('catch-all'); // Add 'catch-all' class for styling
+            break;
+          case "maybe":
+            resultDiv.innerHTML = `<p>The email ${email} status is uncertain (maybe).</p>`;
+            resultDiv.classList.add('maybe'); // Add 'maybe' class for styling
+            break;
+          default:
+            resultDiv.innerHTML = `<p>There was an issue verifying the email ${email}.</p>`;
         }
       })
       .catch(error => {
